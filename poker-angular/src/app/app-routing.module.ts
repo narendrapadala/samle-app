@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [UserAuthService]},
   {path: 'settlement', component: SettlementComponent, canActivate: [UserAuthService]},
-  {path: 'table', component: TableComponent},
+  {path: 'table', component: TableComponent, canActivate: [UserAuthService]},
   {path: '**', redirectTo: 'login'}
 ];
 
