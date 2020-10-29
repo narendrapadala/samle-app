@@ -9,6 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.platform.poker.config.AppProperties;
 import com.platform.poker.exception.BadRequestException;
 import com.platform.poker.security.TokenProvider;
+import com.platform.poker.security.UserPrincipal;
 import com.platform.poker.util.CookieUtils;
 
 import javax.servlet.ServletException;
@@ -62,11 +63,15 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         }
 
         String targetUrl = redirectUri.orElse(getDefaultTargetUrl());
+        //set session
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        String session = Long.toString(userPrincipal.getId());
 
         String token = tokenProvider.createToken(authentication);
 
         return UriComponentsBuilder.fromUriString(targetUrl)
                 .queryParam("token", token)
+                .queryParam("session", session)
                 .build().toUriString();
     }
 
