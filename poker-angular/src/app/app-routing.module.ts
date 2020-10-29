@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [UserAuthService]},
   {path: 'settlement', component: SettlementComponent, canActivate: [UserAuthService]},
   {path: 'table', component: TableComponent},
-  {path: '**', redirectTo: 'table'}
+  {path: '**', redirectTo: 'login'}
 ];
 
 @NgModule({
