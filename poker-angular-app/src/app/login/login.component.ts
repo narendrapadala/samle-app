@@ -21,9 +21,10 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService
     ) { 
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
+        
+        // if (this.authenticationService.currentUserValue) { 
+        //     this.router.navigate(['/']);
+        // }
     }
 
     ngOnInit() {
@@ -47,18 +48,18 @@ export class LoginComponent implements OnInit {
 
 
     test(){
-        console.log("test function called");
-        this.authenticationService.loginx("naredra@narendra.com","narendra").pipe(first())
-        .pipe(first())
-        .subscribe(
-            data => {
-                console.log("data called");
-                console.log(data);
-            },
-            error => {
-                console.log("error called");
-                console.log(error);
-            });
+        // console.log("test function called");
+        // this.authenticationService.loginx("naredra@narendra.com","narendra").pipe(first())
+        // .pipe(first())
+        // .subscribe(
+        //     data => {
+        //         console.log("data called");
+        //         console.log(data);
+        //     },
+        //     error => {
+        //         console.log("error called");
+        //         console.log(error);
+        //     });
     }
 
 
@@ -73,10 +74,14 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
         this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
+            // .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    console.log(data);
+                    localStorage.setItem('currentUser', JSON.stringify(data));
+                    // this.authenticationService.setUser(data);
+                    this.loading=false;
+                    // this.router.navigate([this.returnUrl]);
                 },
                 error => {
                     this.error = error;
