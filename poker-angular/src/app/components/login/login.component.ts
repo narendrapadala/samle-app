@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       err=>{
         console.log('error');
         alert("Invalid username and/or password");
+        this.loginForm.reset();
       }
       );
     }
