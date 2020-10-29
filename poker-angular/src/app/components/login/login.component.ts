@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    
+    this.loginForm.markAllAsTouched();
     if(this.loginForm.valid){
       this.back.login(this.loginForm.value).subscribe(user=>{
         console.log(user);
@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
       },
       err=>{
         console.log('error');
+        alert("Invalid username and/or password");
       }
       );
     }
