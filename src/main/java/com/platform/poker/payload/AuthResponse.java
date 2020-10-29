@@ -2,10 +2,16 @@ package com.platform.poker.payload;
 
 public class AuthResponse {
     private String accessToken;
-    private String tokenType = "Bearer";
+    private String session;
+	private String tokenType = "Bearer";
 
     public AuthResponse(String accessToken) {
         this.accessToken = accessToken;
+    }
+    
+    public AuthResponse(String accessToken, String session) {
+        this.accessToken = accessToken;
+        this.session = session;
     }
 
     public String getAccessToken() {
@@ -23,4 +29,12 @@ public class AuthResponse {
     public void setTokenType(String tokenType) {
         this.tokenType = tokenType;
     }
+    
+    public String getSession() {
+		return session;
+	}
+
+	public void setSession(String session) {
+		this.session = session;
+	}
 }

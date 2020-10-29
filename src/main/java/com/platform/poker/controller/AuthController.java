@@ -19,6 +19,7 @@ import com.platform.poker.payload.LoginRequest;
 import com.platform.poker.payload.SignUpRequest;
 import com.platform.poker.repository.UserRepository;
 import com.platform.poker.security.TokenProvider;
+import com.platform.poker.security.UserPrincipal;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -52,7 +53,9 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String token = tokenProvider.createToken(authentication);
-        return ResponseEntity.ok(new AuthResponse(token));
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        String session = Long.toString(userPrincipal.getId());
+        return ResponseEntity.ok(new AuthResponse(token,session ));
     }
 
     @PostMapping("/signup")
