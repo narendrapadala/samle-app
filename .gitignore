@@ -23,3 +23,53 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+
+
+
+
+
+# compiled output
+/poker-angular-app/dist
+/poker-angular-app/tmp
+/poker-angular-app/out-tsc
+# Only exists if Bazel was run
+/poker-angular-app/bazel-out
+
+# dependencies
+/poker-angular-app/node_modules
+
+# profiling files
+/poker-angular-appchrome-profiler-events*.json
+/poker-angular-appspeed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/poker-angular-app/.sass-cache
+/poker-angular-app/connect.lock
+/poker-angular-app/coverage
+/poker-angular-app/libpeerconnection.log
+/poker-angular-app/npm-debug.log
+/poker-angular-app/yarn-error.log
+/poker-angular-app/testem.log
+/poker-angular-app/typings
+
+# System Files
+.DS_Store
+Thumbs.db
