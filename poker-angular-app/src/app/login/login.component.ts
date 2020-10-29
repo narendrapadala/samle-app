@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router'
 import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from '@app/_services';
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     error = '';
+    queryParam: string = '';
 
     constructor(
         private formBuilder: FormBuilder,
@@ -30,6 +32,12 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
+
+        this.route.queryParams.subscribe(params => {
+            this.queryParam = params['token'];
+            console.log(this.queryParam);
+        });
+          
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
